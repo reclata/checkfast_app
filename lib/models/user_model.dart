@@ -11,6 +11,9 @@ class UserModel {
   final double rating; // Ranking do colaborador (0-5 estrelas)
   final int loyaltyPoints; // Pontos de fidelidade
   final String? profilePhotoUrl;
+  final Map<String, String>? documents; // {'rg': 'url', 'cpf': 'url', 'comprovante': 'url'}
+  final List<String>? demandHistory; // IDs de demandas concluídas
+  final List<Map<String, dynamic>>? paymentHistory; // [{'amount': 150, 'date': '...', 'status': 'Paid'}]
   final DateTime createdAt;
 
   UserModel({
@@ -26,6 +29,9 @@ class UserModel {
     this.rating = 5.0,
     this.loyaltyPoints = 0,
     this.profilePhotoUrl,
+    this.documents,
+    this.demandHistory,
+    this.paymentHistory,
     required this.createdAt,
   });
 
@@ -43,6 +49,9 @@ class UserModel {
       'rating': rating,
       'loyaltyPoints': loyaltyPoints,
       'profilePhotoUrl': profilePhotoUrl,
+      'documents': documents,
+      'demandHistory': demandHistory,
+      'paymentHistory': paymentHistory,
       'createdAt': createdAt.toIso8601String(),
     };
   }
@@ -61,6 +70,9 @@ class UserModel {
       rating: (map['rating'] ?? 5.0).toDouble(),
       loyaltyPoints: map['loyaltyPoints'] ?? 0,
       profilePhotoUrl: map['profilePhotoUrl'],
+      documents: map['documents'] != null ? Map<String, String>.from(map['documents']) : null,
+      demandHistory: map['demandHistory'] != null ? List<String>.from(map['demandHistory']) : null,
+      paymentHistory: map['paymentHistory'] != null ? List<Map<String, dynamic>>.from(map['paymentHistory']) : null,
       createdAt: DateTime.tryParse(map['createdAt'] ?? '') ?? DateTime.now(),
     );
   }
