@@ -2,35 +2,52 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
-  // Paleta de Alta Tecnologia - Dark Mode Premium & Electric Blue
+  // Paleta Dark (Alta Tecnologia)
   static const Color spaceBlack = Color(0xFF0B0E14);
-  static const Color cardGrey = Color(0xFF161B22);
+  static const Color cardDark = Color(0xFF161B22);
+  static const Color glassBorderDark = Color(0xFF30363D);
+
+  // Paleta Light (Clean & Professional)
+  static const Color surfaceLight = Color(0xFFF8FAFC);
+  static const Color cardLight = Color(0xFFFFFFFF);
+  static const Color glassBorderLight = Color(0xFFE2E8F0);
+
+  // Cores de Ação (Comuns)
   static const Color electricBlue = Color(0xFF007BFF);
   static const Color neonCyan = Color(0xFF00F2FF);
   static const Color successEmerald = Color(0xFF2ECC71);
   static const Color textWhite = Color(0xFFF0F6FC);
+  static const Color textBlack = Color(0xFF1A1D23);
   static const Color textSecondary = Color(0xFF8B949E);
-  static const Color glassBorder = Color(0xFF30363D);
 }
 
 class AppTheme {
+  // TEMA ESCURO (DEEP SPACE)
   static ThemeData get premiumDark {
     return ThemeData(
       brightness: Brightness.dark,
       scaffoldBackgroundColor: AppColors.spaceBlack,
+      cardColor: AppColors.cardDark,
       fontFamily: GoogleFonts.outfit().fontFamily,
+      dividerColor: AppColors.glassBorderDark,
       textTheme: TextTheme(
-        headlineLarge: GoogleFonts.outfit(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.textWhite, letterSpacing: -0.5),
+        headlineLarge: GoogleFonts.outfit(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.textWhite),
         bodyMedium: GoogleFonts.outfit(fontSize: 16, color: AppColors.textSecondary),
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.electricBlue,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        ),
+    );
+  }
+
+  // TEMA CLARO (CLEAN TECH)
+  static ThemeData get premiumLight {
+    return ThemeData(
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: AppColors.surfaceLight,
+      cardColor: AppColors.cardLight,
+      fontFamily: GoogleFonts.outfit().fontFamily,
+      dividerColor: AppColors.glassBorderLight,
+      textTheme: TextTheme(
+        headlineLarge: GoogleFonts.outfit(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.textBlack),
+        bodyMedium: GoogleFonts.outfit(fontSize: 16, color: AppColors.textSecondary),
       ),
     );
   }

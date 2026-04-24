@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'core/constants/app_colors.dart';
+import 'core/constants/premium_theme.dart';
 
-void main() {
+void main() async {
   runApp(const CheckFastApp());
 }
 
@@ -14,13 +14,10 @@ class CheckFastApp extends StatelessWidget {
     return MaterialApp(
       title: 'CheckFast',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryBlue),
-        useMaterial3: true,
-        textTheme: GoogleFonts.poppinsTextTheme(),
-        scaffoldBackgroundColor: AppColors.background,
-      ),
-      home: const InitialScreen(),
+      theme: AppTheme.premiumLight,
+      darkTheme: AppTheme.premiumDark,
+      themeMode: ThemeMode.system,
+      home: const DashboardView(),
     );
   }
 }
