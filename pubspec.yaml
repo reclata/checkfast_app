@@ -9,16 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^6.1.0
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^6.2.1
   firebase_core: ^3.0.0
   cloud_firestore: ^5.0.0
   firebase_auth: ^5.0.0
   firebase_storage: ^12.0.0
-  provider: ^6.1.1
+  provider: ^6.1.2
   shared_preferences: ^2.2.2
-  geolocator: ^11.0.0
-  image_picker: ^1.0.7
-  fl_chart: ^0.66.0 # Para gráficos no dashboard
   excel: ^4.0.3 # Exportação em XLS
   google_mlkit_face_detection: ^0.10.0 # Anti-Fraude Facial
   flutter_local_notifications: ^17.0.0 # Alerta de Falta
@@ -30,3 +29,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/logo.png
