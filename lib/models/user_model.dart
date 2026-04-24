@@ -8,6 +8,9 @@ class UserModel {
   final String pixKey;
   final String experience;
   final String status; // 'Em análise', 'Aprovado', 'Reprovado', 'Bloqueado', 'Ativo'
+  final double rating; // Ranking do colaborador (0-5 estrelas)
+  final int loyaltyPoints; // Pontos de fidelidade
+  final String? profilePhotoUrl;
   final DateTime createdAt;
 
   UserModel({
@@ -20,6 +23,9 @@ class UserModel {
     required this.pixKey,
     required this.experience,
     required this.status,
+    this.rating = 5.0,
+    this.loyaltyPoints = 0,
+    this.profilePhotoUrl,
     required this.createdAt,
   });
 
@@ -34,6 +40,9 @@ class UserModel {
       'pixKey': pixKey,
       'experience': experience,
       'status': status,
+      'rating': rating,
+      'loyaltyPoints': loyaltyPoints,
+      'profilePhotoUrl': profilePhotoUrl,
       'createdAt': createdAt.toIso8601String(),
     };
   }
@@ -49,6 +58,9 @@ class UserModel {
       pixKey: map['pixKey'] ?? '',
       experience: map['experience'] ?? '',
       status: map['status'] ?? 'Em análise',
+      rating: (map['rating'] ?? 5.0).toDouble(),
+      loyaltyPoints: map['loyaltyPoints'] ?? 0,
+      profilePhotoUrl: map['profilePhotoUrl'],
       createdAt: DateTime.tryParse(map['createdAt'] ?? '') ?? DateTime.now(),
     );
   }
