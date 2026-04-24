@@ -20,6 +20,8 @@ dependencies:
   image_picker: ^1.0.7
   fl_chart: ^0.66.0 # Para gráficos no dashboard
   excel: ^4.0.3 # Exportação em XLS
+  google_mlkit_face_detection: ^0.10.0 # Anti-Fraude Facial
+  flutter_local_notifications: ^17.0.0 # Alerta de Falta
 
 dev_dependencies:
   flutter_test:
