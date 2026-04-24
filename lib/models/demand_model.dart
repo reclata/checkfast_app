@@ -6,6 +6,7 @@ class DemandModel {
   final double value;
   final int slots;
   final int filledSlots;
+  final int substitutionDeadlineHours; // Prazo para substituição em horas (ex: 24h, 48h)
   final bool active;
 
   DemandModel({
@@ -16,6 +17,7 @@ class DemandModel {
     required this.value,
     required this.slots,
     required this.filledSlots,
+    required this.substitutionDeadlineHours,
     required this.active,
   });
 
@@ -28,6 +30,7 @@ class DemandModel {
       'value': value,
       'slots': slots,
       'filledSlots': filledSlots,
+      'substitutionDeadlineHours': substitutionDeadlineHours,
       'active': active,
     };
   }
@@ -41,6 +44,7 @@ class DemandModel {
       value: (map['value'] ?? 0).toDouble(),
       slots: map['slots'] ?? 0,
       filledSlots: map['filledSlots'] ?? 0,
+      substitutionDeadlineHours: map['substitutionDeadlineHours'] ?? 24,
       active: map['active'] ?? true,
     );
   }
