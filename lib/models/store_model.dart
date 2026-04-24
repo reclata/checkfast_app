@@ -1,6 +1,7 @@
 class StoreModel {
   final String id;
   final String name;
+  final String cnpj;
   final Map<String, dynamic> address; // lat, lng, street, city
   final String responsible;
   final String rules;
@@ -9,6 +10,7 @@ class StoreModel {
   StoreModel({
     required this.id,
     required this.name,
+    required this.cnpj,
     required this.address,
     required this.responsible,
     required this.rules,
@@ -19,6 +21,7 @@ class StoreModel {
     return {
       'id': id,
       'name': name,
+      'cnpj': cnpj,
       'address': address,
       'responsible': responsible,
       'rules': rules,
@@ -30,6 +33,7 @@ class StoreModel {
     return StoreModel(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
+      cnpj: map['cnpj'] ?? '',
       address: Map<String, dynamic>.from(map['address'] ?? {}),
       responsible: map['responsible'] ?? '',
       rules: map['rules'] ?? '',
