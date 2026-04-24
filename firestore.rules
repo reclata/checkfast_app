@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Funções de verificação
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return get(/databases/$(database)/documents/agency_users/$(request.auth.uid)).data.permissions.admin == true;
+    }
+
+    // Regras para Colaboradores (Workers)
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow write: if request.auth.uid == userId || isAdmin();
+    }
+
+    // Regras para Lojas (PDVs)
+    match /stores/{storeId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Regras para Demandas (Vagas)
+    match /demands/{demandId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Regras para Presenças (Attendances)
+    // - O promotor só pode criar e ver a própria presença
+    // - O admin pode ver tudo e aprovar (editar status)
+    match /attendances/{attendanceId} {
+      allow create: if isSignedIn();
+      allow read: if isSignedIn() && (resource.data.workerId == request.auth.uid || isAdmin());
+      allow update: if isAdmin(); // Apenas admin aprova ou reprova diárias
+    }
+    
+    // Regras para Usuários da Agência
+    match /agency_users/{userId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
